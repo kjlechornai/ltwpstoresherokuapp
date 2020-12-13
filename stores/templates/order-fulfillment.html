@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+  <main >
+    <div class="container wow fadeIn">
+
+      <h2 class="my-5 h2 text-center">Order Fulfillment (store issue note)</h2>
+     <form method="POST" action="{% url 'cart:order-fulfillment' %}">
+        {% csrf_token %}
+
+        {{ form|crispy}}
+
+        <div class="row">
+          {% include "order_snippet.html" %}
+        </div>
+
+        <input class="btn btn-success" type="submit" value="ISSUE"></input>
+
+      </form>
+
+   
+      
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+{% load cart_template_tags%}
+
+<nav
+  class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar"
+>
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand waves-effect" href="/">
+      <strong class="blue-text">LTWP store</strong>
+    </a>
+
+    <!-- Collapse -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div class="dropdown show mt-2 mr-4">
+            <a class="dropdown-toggle grey-text" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong>Projects</strong> 
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="/">All</a>
+              <a class="dropdown-item" href="{% url 'item:substation-project' %}">Substation maintenance</a>
+              <a class="dropdown-item" href="{% url 'item:ohl-project' %}">OHL maintenance</a>
+              <a class="dropdown-item" href="{% url 'item:comm-line-project' %}">communication lines maintenance</a>
+              <a class="dropdown-item" href="{% url 'item:general-technical-items' %}">general technical items(bolts, connectors</a>
+              <a class="dropdown-item" href="{% url 'item:camps-project' %}">camps/village maintenance</a>
+              <a class="dropdown-item" href="{% url 'item:vehicle-tyre-project' %}">vehicles tyre maintenance</a>
+              <a class="dropdown-item" href="{% url 'item:ppe-uniform-project' %}">PPE and uniform</a>
+              <a class="dropdown-item" href="{% url 'item:civil-project' %}">civil projects</a>
+              <a class="dropdown-item" href="{% url 'item:woc-project' %}">winds of change</a>
+            </div>
+          </div>
+        </li>               
+        <li class="nav-item">
+          <div class="dropdown show mt-2">
+            <a class="dropdown-toggle grey-text" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong >Departments</strong> 
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="/">All</a>
+              <a class="dropdown-item" href="{% url 'item:technical-department' %}">technical</a>
+              <a class="dropdown-item" href="{% url 'item:camps-department' %}">camps/village</a>
+              <a class="dropdown-item" href="{% url 'item:workshop-department' %}">workshop</a>
+              <a class="dropdown-item" href="{% url 'item:civil-department' %}">civil</a>
+              <a class="dropdown-item" href="{% url 'item:stores-department' %}">stores</a>
+              <a class="dropdown-item" href="{% url 'item:admin-department' %}">admin</a>
+              <a class="dropdown-item" href="{% url 'item:cl-department' %}">community liaison</a>
+              <a class="dropdown-item" href="{% url 'item:woc-department' %}">woc</a>
+              <a class="dropdown-item" href="{% url 'item:hse-department' %}">hse</a>
+              <a class="dropdown-item" href="{% url 'item:security-department' %}">security</a>
+              <a class="dropdown-item" href="{% url 'item:it-department' %}">it</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item ml-2 mr-2">
+          <a class="nav-link text-success" href="{% url 'item:receive-list' %}">Received</a>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link text-success" href="{% url 'item:issue-list' %}">Issued</a>
+        </li>
+      </ul>
+      
+
+      <!-- Right -->
+      <ul class="navbar-nav nav-flex-icons">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a
+            href="{% url 'cart:order-summary' %}"
+            class="nav-link waves-effect"
+          >
+            <span class="badge red z-depth-1 mr-1">
+              {{ request.user| cart_item_count }}
+            </span>
+            <i class="fas fa-shopping-cart"></i>
+            <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Login </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
+            <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
