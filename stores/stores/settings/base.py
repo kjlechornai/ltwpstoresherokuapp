@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 SECRET_KEY = Config('SECRET_KEY')
 
-ALLOWED_HOSTS = []#'192.168.3.148'
+ALLOWED_HOSTS = ['ltwp-stores.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
