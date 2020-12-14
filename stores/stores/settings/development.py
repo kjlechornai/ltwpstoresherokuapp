@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 # myaccount.google.com/lesssecureapps
 # accounts.google.com/DisplayUnlockCaptcha
 # myaccount.google.com/apppasswords
